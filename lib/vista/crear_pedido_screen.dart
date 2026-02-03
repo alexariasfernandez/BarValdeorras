@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class CrearPedidoScreen extends StatefulWidget {
   // Constructor del screen
   const CrearPedidoScreen({super.key});
-  
+
   @override
   State<CrearPedidoScreen> createState() => _CrearPedidoScreenState();
 }
@@ -16,6 +16,7 @@ class CrearPedidoScreen extends StatefulWidget {
 class _CrearPedidoScreenState extends State<CrearPedidoScreen> {
   /// Instancia del ViewModel asociado
   final CrearPedidoViewModel vm = CrearPedidoViewModel();
+
   /// Construye la interfaz del screen
   @override
   Widget build(BuildContext context) {
@@ -31,36 +32,47 @@ class _CrearPedidoScreenState extends State<CrearPedidoScreen> {
               onChanged: vm.setNombreMesa,
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () async {
-                final resultado = await Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => ProductosScreen(vm: ProductosViewmodel()),
-                  ),
-                );
-                if (!mounted) return;
-                if (resultado != null) vm.setItems(resultado);
-                setState(() {});
-              },
-              child: const Text("Elegir Productos"),
-            ),
-            const SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: () {
-                if (vm.items.isEmpty) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text("Añade productos antes de confirmar"),
+
+            /// Tooltip y botón para elegir productos
+            Tooltip(
+              message: "Botón para elegir productos",
+              child: ElevatedButton(
+                onPressed: () async {
+                  final resultado = await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => ProductosScreen(vm: ProductosViewmodel()),
                     ),
                   );
-                  return;
-                }
-                vm.confirmarPedido();
-                Navigator.pop(context, true);
-              },
-              child: const Text("Confirmar pedido"),
+                  if (!mounted) return;
+                  if (resultado != null) vm.setItems(resultado);
+                  setState(() {});
+                },
+                child: const Text("Elegir Productos"),
+              ),
             ),
+
+            const SizedBox(height: 10),
+            /// Tooltip y botón para confirmar el pedido
+            Tooltip(
+              message: "Botón para confirmar el pedido",
+              child: ElevatedButton(
+                onPressed: () {
+                  if (vm.items.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("Añade productos antes de confirmar"),
+                      ),
+                    );
+                    return;
+                  }
+                  vm.confirmarPedido();
+                  Navigator.pop(context, true);
+                },
+                child: const Text("Confirmar pedido"),
+              ),
+            ),
+
             const SizedBox(height: 15),
             Text("Total: €${vm.total.toStringAsFixed(2)}"),
             const SizedBox(height: 15),

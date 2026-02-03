@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 /// ViewModel para la pantalla principal que maneja la lista de pedidos
 class HomeViewmodel extends ChangeNotifier {
   /// Lista de pedidos actuales
+    
   final List<Pedido> pedidos = [
     Pedido(
       nombreMesa: 'Mesa 1',
@@ -35,5 +36,9 @@ class HomeViewmodel extends ChangeNotifier {
   void addPedido(Pedido pedido) {
     pedidos.add(pedido);
     notifyListeners();
+  }
+  /// Valida si la lista de pedidos está vacía
+  bool pedidovacio() {
+    return pedidos.isEmpty;
   }
 }
