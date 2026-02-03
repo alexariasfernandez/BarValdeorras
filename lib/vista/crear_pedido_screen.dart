@@ -3,16 +3,20 @@ import 'package:barvaldeorras/vistamodelo/crear_pedido_viewmodel.dart';
 import 'package:barvaldeorras/vistamodelo/productos_viewmodel.dart';
 import 'package:flutter/material.dart';
 
+// Pantalla para crear un nuevo pedido
 class CrearPedidoScreen extends StatefulWidget {
+  // Constructor del screen
   const CrearPedidoScreen({super.key});
-
+  
   @override
   State<CrearPedidoScreen> createState() => _CrearPedidoScreenState();
 }
 
+/// Estado del screen para crear un nuevo pedido
 class _CrearPedidoScreenState extends State<CrearPedidoScreen> {
+  /// Instancia del ViewModel asociado
   final CrearPedidoViewModel vm = CrearPedidoViewModel();
-
+  /// Construye la interfaz del screen
   @override
   Widget build(BuildContext context) {
     return Scaffold(

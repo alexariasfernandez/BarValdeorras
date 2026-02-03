@@ -1,11 +1,14 @@
 import 'package:barvaldeorras/modelo/pedido.dart';
 import 'package:flutter/material.dart';
 
+/// Pantalla que muestra el resumen del pedido
 class ResumenScreen extends StatelessWidget {
   const ResumenScreen({super.key});
 
+/// Construye la interfaz de la pantalla de resumen
   @override
   Widget build(BuildContext context) {
+    /// Obtiene el pedido pasado como argumento
     final Pedido pedido = ModalRoute.of(context)!.settings.arguments as Pedido;
     return Scaffold(
       appBar: AppBar(title: const Text("Resumen del pedido")),
@@ -22,6 +25,7 @@ class ResumenScreen extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: pedido.items
+                /// Genera una lista de los items del pedido
                     .map(
                       (e) => ListTile(
                         title: Text("${e.producto.nombre} x ${e.cantidad}"),

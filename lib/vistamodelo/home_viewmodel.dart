@@ -3,7 +3,9 @@ import 'package:barvaldeorras/modelo/pedido.dart';
 import 'package:barvaldeorras/modelo/producto.dart';
 import 'package:flutter/material.dart';
 
+/// ViewModel para la pantalla principal que maneja la lista de pedidos
 class HomeViewmodel extends ChangeNotifier {
+  /// Lista de pedidos actuales
   final List<Pedido> pedidos = [
     Pedido(
       nombreMesa: 'Mesa 1',
@@ -14,6 +16,7 @@ class HomeViewmodel extends ChangeNotifier {
         ),
       ],
     ),
+    /// Segundo pedido de ejemplo
     Pedido(
       nombreMesa: 'Mesa 2',
       items: [
@@ -28,6 +31,7 @@ class HomeViewmodel extends ChangeNotifier {
       ],
     ),
   ];
+  /// Añade un nuevo pedido a la lista y notifica a los oyentes
   void addPedido(Pedido pedido) {
     pedidos.add(pedido);
     notifyListeners();
