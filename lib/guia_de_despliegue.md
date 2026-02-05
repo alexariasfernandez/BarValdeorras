@@ -1,4 +1,4 @@
-## 🚀 Despliegue de la aplicación
+## 🚀 Guia de despliegue de la aplicación
 
 La aplicación **Bar Valdeorras** está desarrollada con **Flutter**, lo que permite desplegarla en diferentes plataformas a partir de un único código fuente.
 
