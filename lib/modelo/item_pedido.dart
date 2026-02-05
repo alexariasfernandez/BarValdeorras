@@ -18,7 +18,7 @@ class ItemPedido {
     );
   }
 
-  /// Sobrescribir operador de igualdad para comparar items de pedido
+  /// Sobrescribir operador de igualdad para comparar items
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
